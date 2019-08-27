@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <link href = "betyg.css" rel = "stylesheet">
+		    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+		<title> Räkna ut meritpoäng </title>
+	</head>
+	<body>
+
+		<h1> Räkna ut ditt meritpoäng! </h1>
+
+		<form id="form">
+
+<!-- Listan på tillgängliga kurser -->
+
+			<select>
+				<option> KEMKEM01 </option>
+			  <option> SVESVE03 </option>
+			  <option> GRÄGRÄ0 </option>
+			  <option> PRRPRR02 </option>
+			  <option> WESWEB01 </option>
+			  <option> ENGENG05 </option>
+			  <option> IDRIDR01 </option>
+			  <option> MATMAT01c </option>
+			  <option> RELREL01 </option>
+			  <option> SAMSAM01b </option>
+			  <option> SVESVE01 </option>
+			  <option> TEKTEK01 </option>
+			  <option> ENGENG06 </option>
+			  <option> HISHIS01a1 </option>
+			  <option> MATMAT02c </option>
+			  <option> MATMAT03c </option>
+			  <option> SVESVE02 </option>
+			  <option> FYSFYS01a </option>
+			  <option> DAODAC0 </option>
+			  <option> PRRPRR01 </option>
+			  <option> WEUWEB01 </option>
+			  <option> WEUWEB02 </option>
+
+			</select>
+
+			<input type="text" name="betyg" placeholder="betyg">
+
+		</form>
+
+		<!-- Knappen som sätter igång uträkningen -->
+
+		<button onclick="func()"> Räkna ut </button>
+
+
+		<script>
+
+			var simplePoints = 0;
+			var multipliedPoints = 0;
+
+			//Ger kurser poäng
+
+			let kurser = {
+				"KEMKEM01" : 100,
+				"SVESVE03" : 100,
+				"GRÄGRÄ0" : 100,
+				"PRRPRR02" : 100,
+			  "WESWEB01" : 100,
+			  "ENGENG05" : 100,
+			  "IDRIDR01" : 100,
+			  "MATMAT01c" : 100,
+			  "RELREL01" : 50,
+			  "SAMSAM01b" : 100,
+			  "SVESVE01" : 100,
+			  "TEKTEK01" : 150,
+			  "ENGENG06" : 100,
+				"HISHIS01a1" : 50,
+				"MATMAT02c" : 100,
+				"MATMAT03c" : 100,
+				"SVESVE02" : 100,
+				"FYSFYS01a" : 150,
+				"DAODAC0" : 100,
+				"PRRPRR01" : 100,
+				"WEUWEB01" : 100,
+				"WEUWEB02" : 100
+
+			};
+
+			//Definierar betyg
+
+			let betyg = {
+				"A" : 20,
+				"B" : 17.5,
+				"C" : 15,
+				"D" : 12.5,
+				"E" : 10,
+				"F" : 0
+			};
+
+			function func(){
+				var kurs = document.getElementById("form")[0].value;
+				var betyget = document.getElementById("form")[1].value;
+
+				//Gör så att man måste skriva något i fältet
+
+				if(betyget ==""){
+					alert("Sätt in ett korrekt betyg!");
+				}
+				else{
+
+					//Kör multiplikation på poäng och betyg
+
+					simplePoints += kurser[kurs];
+					multipliedPoints=simplePoints*betyg[betyget];
+
+					//Skriver ut resultatet
+
+					document.getElementById("info").innerHTML = "Poäng: <br>" + simplePoints +  " <br> Meritpoäng: <br> " + multipliedPoints;
+					if(simplePoints >= 2500){
+
+						alert("Möjligt att få gymnasie examen!");
+					}
+				}
+				document.getElementById("form").reset();
+			}
+		</script>
+
+<!-- Visar uträknade poäng och merit -->
+
+		<p id="info">
+		</p>
+
+<!-- Tabellen som visar värdet på olika betyg -->
+
+		<p id="varde">
+			A = 20 p <br>
+			B = 17,5 p <br>
+			C = 15 p <br>
+			D = 12,5 p <br>
+			E = 10 p <br>
+			F = 0 p <br>
+		</p>
+	</body>
+</html>
